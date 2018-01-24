@@ -1,7 +1,4 @@
-
-/*
- * GET categories list
- */
+/* Get categories list */
 
 exports.list = function(req, res){
   req.getConnection(function(err,connection){
