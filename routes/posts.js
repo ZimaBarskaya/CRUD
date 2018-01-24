@@ -1,6 +1,5 @@
-/*
- * GET recipes list
- */
+/* Get posts list */
+
 
 exports.list = function(req, res){
   req.getConnection(function(err,connection){
@@ -14,7 +13,7 @@ exports.list = function(req, res){
 
 };
 
-/*Add the recipe*/
+/*Add the post*/
 exports.add = function(req, res){
   req.getConnection(function(err,connection){
     var query = connection.query('SELECT * FROM post; SELECT name FROM category',function(err,rows)
@@ -26,7 +25,7 @@ exports.add = function(req, res){
   });
 };
 
-/*Edit the recipe*/
+/*Edit the post*/
 exports.edit = function(req, res){
     var id = req.params.id;
     req.getConnection(function(err,connection){
@@ -42,7 +41,7 @@ exports.edit = function(req, res){
     });
 };
 
-/*Save the recipe*/
+/*Save the post*/
 exports.save = function(req,res){
     var input = JSON.parse(JSON.stringify(req.body));
     req.getConnection(function (err, connection) {
@@ -64,7 +63,7 @@ exports.save = function(req,res){
     });
 };
 
-/*Save edited recipe*/
+/*Save edited post*/
 exports.save_post = function(req,res){
     var input = JSON.parse(JSON.stringify(req.body));
     var id = req.params.id;
@@ -88,7 +87,7 @@ exports.save_post = function(req,res){
     });
 };
 
-/*Delete recipe*/
+/*Delete post*/
 exports.delete_post = function(req,res){
      var id = req.params.id;
 
