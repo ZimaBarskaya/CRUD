@@ -1,24 +1,28 @@
-This is a very basic example of CRUD in Node.js n mySQL.
-
-Installation,Live DEMO, and tutorial here : http://teknosains.com/i/simple-crud-nodejs-mysql
-
-## Installation
-*for newbies : Clone or download zip to your machine then hit this :
-
-	npm install
-
-## Configuration (database)
-app.js
-
-        host: 'localhost',
-        user: 'root',
-        password : 'root',
-        port : 3306, //port mysql
-        database:'nodejs'	
-
-
-	
-You're gonna need to create a DB named 'nodejs' and import customer.sql
-
-## NOTES
-This repo still use Express 3, you might want to upgrade yourself or you can Go here (https://github.com/codetrash/rest-crud) for newest Express 
+<h2>Проект содержал слейдующие задачи:</h2>
+<ul>
+  <li>Разработать сервер при помощи которого можно создавать и хранить некоторый набор кулинарных рецептов по категориям.
+<ul>
+  <li>Разработать CRUD для категорий рецептов.</li>
+  <li>Разработать CRUD для рецептов.</li>
+  <li>Данные хранить в базе данных.</li>
+    <li>Количество категорий, количество подкатегорий и количество уровней категорий неограниченно.</li>
+    <li>Рецепт содержит только название и текст рецепта, все данные текстовые.</li>
+</ul>
+</li>
+  <li>Разработать CRUD для статей.</li>
+  <li>Статьи, как и рецепты, относятся к категориям.</li>
+  <li>Статья содержит только название, краткое описание и текст статьи, все данные текстовые.</li>
+<li>Разработать API.
+<ul>
+  <li>По идентификатору статьи или рецепта возвращается полный перечень категорий, к которым относится указанный ресурс, в порядке вложенности.</li>
+  <li>По идентификатору возвращается статья или рецепт.</li>
+  <li>По идентификатору категории возвращается полный список статей или рецептов данной категории.</li>
+    <li>По идентификатору категории возвращается полный перечень категорий, к которым относится указанный ресурс, в порядке вложенности.</li>
+</ul>
+</li>
+</ul>
+<br>
+<h2>Трудоемкость проекта:</h2>
+<ul>
+  <li><bold>4 часа</bold></li>
+</ul>
