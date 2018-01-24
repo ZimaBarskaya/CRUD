@@ -72,7 +72,7 @@ exports.postsCat = function(req, res){
     });
 };
 
-/*Select post by category id*/
+/*Select categories of recipe by recipe id*/
 exports.catRecipe = function(req, res){
     var id = req.params.id;
     req.getConnection(function(err,connection){
@@ -109,7 +109,7 @@ exports.catRecipe = function(req, res){
     });
 };
 
-/*Select post by category id*/
+/*Select categories of post by post id*/
 exports.catPost = function(req, res){
     var id = req.params.id;
     req.getConnection(function(err,connection){
@@ -164,9 +164,5 @@ exports.listCat = function(req, res){
                    });
 
             });
-
-
-
-
     });
 };
