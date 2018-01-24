@@ -1,0 +1,39 @@
+<%- include layouts/header.ejs %>
+
+        <div class="page-data">
+
+            <form method="post" action="/posts/edit/<%=data[0].id%>">
+                <table cellpadding="11">
+                <tr>
+                    <td class="label">Name:</td><td> <input type="text" name="name" value="<%=data[0].name%>" required></td>
+                 </tr>
+                 <tr>
+                   <td class="label">Category:</td><td>
+                     <select name="category">
+                       <% if(categories.length){
+                        for(var i = 0;i < categories.length;i++) { %>
+                       <option value="<%=categories[i].name%>"  <% if(data[0].category_name==categories[i].name){%>selected<%} %>><%=categories[i].name%></option>
+                       <% }
+                     } %>
+                     </select>
+                   </td>
+                </tr>
+                <tr>
+                    <td class="label">Post preview:</td><td> <textarea name="preview" rows="4" cols="50" required><%=data[0].preview_text%></textarea></td>
+                 </tr>
+                 <tr>
+                     <td class="label">Post text:</td><td> <textarea name="text" rows="4" cols="50" required><%=data[0].text%></textarea></td>
+                  </tr>
+                 <tr>
+                    <td class="label"></td>
+                    <td>
+                        &nbsp; <input type="submit" name="submit" value="Save">
+                       <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
+                    </td>
+                 </tr>
+                </table>
+            </form>
+
+        </div>
+
+<%- include layouts/footer.ejs %>

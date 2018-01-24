@@ -1,0 +1,40 @@
+<%- include layouts/header.ejs %>
+
+        <div class="page-data">
+         <%
+         if(data.length){ %>
+         <div class="data-table">
+            <table border="1" cellpadding="7" cellspacing="7">
+                <tr>
+                    <th width="50px">№</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Post</th>
+                    <th width="120px">Action</th>
+                </tr>
+
+                <%
+                 for(var i = 0;i < data.length;i++) { %>
+                <tr>
+                    <td><%=(i+1)%></td>
+                    <td><%=data[i].name%></td>
+                    <td><%=data[i].category_name%></td>
+                    <td><%=data[i].preview_text%></td>
+                    <td>
+                        <a class="a-inside edit" href="../posts/edit/<%=data[i].id%>">Edit</a>
+                        <a class="a-inside delete" href="../posts/delete/<%=data[i].id%>">Delete</a>
+
+                    </td>
+                </tr>
+            <% } %>
+            </table>
+         </div>
+		 <div class="data-btn">
+           <button onClick="addPost();">+ Add</button>
+         </div>
+       <% } else { %>
+          <h2>No Posts</h2>
+      <% } %>
+        </div>
+
+<%- include layouts/footer.ejs %>

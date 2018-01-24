@@ -1,0 +1,39 @@
+<%- include layouts/header.ejs %>
+
+        <div class="page-data">
+
+            <form method="post" action="/categories/edit/<%=data[0][0].id%>">
+                <table cellpadding="11">
+                <tr>
+                    <td class="label">Name:</td><td> <input type="text" name="name" value="<%=data[0][0].name%>" required></td>
+                    <input type="hidden" name="old_name" value="<%=data[0][0].name%>" required>
+                 </tr>
+                 <tr>
+                   <td class="label">Sub-category of category</td><td>:
+                     <select name="category">
+                       <option value="None">None</option>
+                       <% if(data.length){
+
+                        for(var i = 0;i < data[1].length;i++) {
+                          if(data[1][i].name != data[0][0].name) {
+                          %>
+                       <option value="<%=data[1][i].name%>" <% if(data[0][0].parent_name==data[1][i].name){%>selected<%} %>><%=data[1][i].name%></option>
+                       <% }
+                        }
+                     } %>
+                     </select>
+                   </td>
+                </tr>
+                 <tr>
+                    <td class="label"></td>
+                    <td>
+                        &nbsp; <input type="submit" name="submit" value="Save">
+                       <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
+                    </td>
+                 </tr>
+                </table>
+            </form>
+
+        </div>
+
+<%- include layouts/footer.ejs %>
