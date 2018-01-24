@@ -1,6 +1,4 @@
-/*
- * GET recipes list
- */
+/* Get recipes list */
 
 exports.list = function(req, res){
   req.getConnection(function(err,connection){
