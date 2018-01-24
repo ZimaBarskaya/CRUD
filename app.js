@@ -30,18 +30,14 @@ if ('development' == app.get('env')) {
 
 
 app.use(
-
     connection(mysql,{
-
-        host: 'localhost', //'localhost',
+        host: 'localhost',
         user: 'root',
         password : '',
-        port : 3306, //port mysql
-        database:'nodejs',
+        port : 3306, 
+        database:'yourDb',
         multipleStatements: true
-
-    },'pool') //or single
-
+    },'pool') 
 );
 
 
