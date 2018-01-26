@@ -97,15 +97,36 @@ exports.save_edit = function(req,res){
 /*Delete category*/
 exports.delete_category = function(req,res){
      var id = req.params.id;
-
-     req.getConnection(function (err, connection) {
-
-        connection.query("DELETE FROM category  WHERE id = ? ",[id], function(err, rows)
-        {
-             if(err)
-                 console.log("Error deleting : %s ",err );
-
-             res.redirect('/categories');
-        });
-     });
+    req.getConnection(function(err,connection){
+    var category_name;
+    var mainFunc =  function (currentParent) {
+      var none_value = {
+          category_name    : "None"
+      };
+        if (currentParent !== undefined) {
+          connection.query("SELECT name FROM category WHERE id = ?; DELETE FROM category WHERE id = ?",[currentParent, currentParent], function(err, rows)
+            {
+              if (err)
+                  console.log("Error Updating : %s ",err );
+                  if (rows[0][0] !== undefined) {
+                    category_name = rows[0][0].name;
+                    connection.query('SELECT * FROM category WHERE parent_name = ?; DELETE FROM category WHERE parent_name = ?; UPDATE recipe set ? WHERE category_name = ?; UPDATE post set ? WHERE category_name = ?;',[category_name, category_name, none_value, category_name, none_value, category_name],function(err,rows)
+                     {
+                         if(err)
+                             console.log("Error Selecting : %s ",err );
+                         for (var i = 0; i < rows[0].length; i++) {
+                           if(rows[0].length > 0) {
+                             if (rows[0][i] !== undefined) {
+                               mainFunc(parseInt(rows[0][i].id));
+                             }
+                           }
+                         }
+                      });
+                  }
+            });
+          }
+        };
+      mainFunc(id);
+      res.redirect('/categories');
+    });
 };
